@@ -42,8 +42,9 @@ namespace Vidly.Controllers
         {
             var genres = _context.Genres.ToList();
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel()
             {
+                //Movie = new Movie(), //This is for the hidden field in MovieForm Movie.Id. Otherwise, it will have validation error
                 Genres = genres
             };
 
@@ -57,9 +58,8 @@ namespace Vidly.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
 
@@ -72,10 +72,10 @@ namespace Vidly.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new MovieFormViewModel
+                var viewModel = new MovieFormViewModel(movie)
                 {
                     Genres = _context.Genres.ToList()
-            };
+                };
 
                 return View("MovieForm", viewModel);
             }
