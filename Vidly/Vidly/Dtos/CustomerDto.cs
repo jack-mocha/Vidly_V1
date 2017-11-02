@@ -19,7 +19,7 @@ namespace Vidly.Dtos
 
         public byte MembershipTypeId { get; set; }
 
-        //[Min18YearsIfAMember]
+        //[Min18YearsIfAMember] //Disabled - Ideally we should have only 1 way to create a customer, but now we have both mvc action and api. This is disabled because the custom validation is using Customer instead of CustomerDto
         public DateTime? BirthDate { get; set; }
     }
 }
