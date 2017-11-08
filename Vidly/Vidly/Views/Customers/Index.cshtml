@@ -48,6 +48,8 @@ else
 {
     <script>
         $(document).ready(function () {
+            $("#customers").DataTable();
+
             //$("#customers .js-delete").on("click", function () { //for each delete button, we are going to have a separate handler function in the memory. Not sufficient
             $("#customers").on("click", ".js-delete", function () { //This approach will one have one handler because we only have one item that is attached to this id. js-delete is now a filter as the second argument of the on method
                 var button = $(this); //The scope of "this" can change in different call back functions
