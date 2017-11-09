@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -20,9 +21,14 @@ namespace Vidly.Controllers.Api
         }
 
         //GET /api/movies
-        public IEnumerable<MovieDto> GetMovies()
+        public IHttpActionResult GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>); //Use delegate (a reference to the method) instead of actually calling the method
+            var movieDtos = _context.Movies
+                .Include(m => m.Genre)
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>); //Use delegate (a reference to the method) instead of actually calling the method
+
+            return Ok(movieDtos);
         }
 
         //GET /api/movies/1

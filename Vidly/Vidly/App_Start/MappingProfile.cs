@@ -21,7 +21,7 @@ namespace Vidly.App_Start
                 .ForMember(m => m.Id, opt => opt.Ignore()); //Important when trying to update movie
 
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
-            Mapper.CreateMap<Customer, CustomerDto>();
+            Mapper.CreateMap<Genre, GenreDto>();
 
         }
     }
