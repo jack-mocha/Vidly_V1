@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<Vidly.Models.Customer>*@
-@model Vidly.ViewModels.CustomersViewModel
+@*@model Vidly.ViewModels.CustomersViewModel*@
 @*
     Note: I've set the model for this view to IEnumerable<Customer>.
     This is a simple interface implemented by the list class. Since
@@ -50,12 +50,12 @@
                 columns: [
                     {
                         data: "name",
-                        render: function (data, type, customer) {
+                        render: function (data, type, customer) { //data property is the value of the name, type property is the type of this column, customer property is the actual object(row) you are rendering
                             return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
                         }
                     },
                     {
-                        data: "name"
+                        data: "membershipType.name" //data property tells DataTable where to get data for this column. In this case, it is the JSON string we get from the url
                     },
                     {
                         data: "id",
