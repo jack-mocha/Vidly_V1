@@ -9,6 +9,14 @@
     iterate over the list. If in the future, we replace the List with a
     different data structure, as long as it is enumerable, our view code
     will remain unchanged.
+
+    Note: DataTable has a upper limit of 1000 customers in order for 
+    pagenation, searching, and sorting to work efficiently. 
+    If we have more customers, we can enable server side processing on the DataTable. 
+    Read from their doc.
+
+    Note: It is better to separate the code that is responsible for the View and those that is responsible for Data Access
+
 *@
 @{
     ViewBag.Title = "Customers";
