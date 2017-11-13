@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<Vidly.Models.Movie>*@
-@model Vidly.ViewModels.MoviesViewModel
+@*@model Vidly.ViewModels.MoviesViewModel*@
 @*
     Note: I've set the model for this view to IEnumerable<Customer>.
     This is a simple interface implemented by the list class. Since
@@ -18,34 +18,29 @@
 <p>
     @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
 </p>
-@if (!Model.Movies.Any())
-{
-    <p>We don't have any movies yet.</p>
-}
-else
-{
-    <table id="movies" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Movies</th>
-                <th>Genre</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            @*@foreach (var movie in Model.Movies)
+
+<table id="movies" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Movies</th>
+            <th>Genre</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var movie in Model.Movies)
             {
                 <tr>
                     <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
                     <td>@movie.Genre.Name</td>
                     <td>
-                        <button data-movie-id="@movie.Id" class="btn-link js-delete">Delete</button> 
+                        <button data-movie-id="@movie.Id" class="btn-link js-delete">Delete</button>
                     </td>
                 </tr>
             }*@
-        </tbody>
-    </table>
-}
+    </tbody>
+</table>
+
 
 @section scripts
 {
